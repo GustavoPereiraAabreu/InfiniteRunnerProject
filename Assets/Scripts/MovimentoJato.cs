@@ -1,26 +1,76 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class MovimentoJato : MonoBehaviour
+public class JatoTrocaFaixa : MonoBehaviour
 {
-    [Header("Configurações de Velocidade")]
-    public float velocidadeFrente = 20f;
-    public float velocidadeLateral = 15f;
+    [Header("Pontos de Posição (Faixas)")]
+    public Transform[] pontosFaixa;
 
-    [Header("Limites do Cenário")]
-    public float limiteEsquerda = -10f;
-    public float limiteDireita = 10f;
+    [Header("Configurações de Movimento")]
+    public float velocidadeTransicao = 20f;
+    public bool usarTeleporteDireto = false;
+
+    [Header("Animação / Componente Animator")]
+    public Animator animatorJato;
+
+    private int indiceFaixaAtual = 1;
+
+    void Start()
+    {
+        if (pontosFaixa.Length > indiceFaixaAtual && pontosFaixa[indiceFaixaAtual] != null)
+        {
+            transform.position = pontosFaixa[indiceFaixaAtual].position;
+        }
+    }
+
+    public void OnMove(InputValue value)
+    {
+        Vector2 inputVetor = value.Get<Vector2>();
+
+        if (inputVetor.x < -0.3f)
+        {
+            MudarFaixa(-1);
+        }
+
+        else if (inputVetor.x > 0.3f)
+        {
+            MudarFaixa(1);
+        }
+    }
+
+    void MudarFaixa(int direcao)
+    {
+        int novoIndice = Mathf.Clamp(indiceFaixaAtual + direcao, 0, pontosFaixa.Length - 1);
+
+        if (novoIndice != indiceFaixaAtual)
+        {
+            indiceFaixaAtual = novoIndice;
+
+            if (animatorJato != null)
+            {
+                if (direcao < 0)
+                {
+                    animatorJato.SetTrigger("VirarEsquerda");
+                }
+                else if (direcao > 0)
+                {
+                    animatorJato.SetTrigger("VirarDireita");
+                }
+            }
+
+            if (usarTeleporteDireto)
+            {
+                transform.position = pontosFaixa[indiceFaixaAtual].position;
+            }
+        }
+    }
 
     void Update()
     {
-        transform.Translate(Vector3.forward * velocidadeFrente * Time.deltaTime, Space.World);
-
-        float inputHorizontal = Input.GetAxis("Horizontal");
-
-        Vector3 posicaoAtual = transform.position;
-        float novaPosicaoX = posicaoAtual.x + (inputHorizontal * velocidadeLateral * Time.deltaTime);
-
-        posicaoAtual.x = Mathf.Clamp(novaPosicaoX, limiteEsquerda, limiteDireita);
-
-        transform.position = posicaoAtual;
+        if (!usarTeleporteDireto && pontosFaixa.Length > 0)
+        {
+            Vector3 alvo = pontosFaixa[indiceFaixaAtual].position;
+            transform.position = Vector3.MoveTowards(transform.position, alvo, velocidadeTransicao * Time.deltaTime);
+        }
     }
 }
