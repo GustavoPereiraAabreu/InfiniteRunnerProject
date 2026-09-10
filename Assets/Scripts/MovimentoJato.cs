@@ -10,53 +10,35 @@ public class JatoTrocaFaixa : MonoBehaviour
     public float velocidadeTransicao = 20f;
     public bool usarTeleporteDireto = false;
 
-    [Header("Animação / Componente Animator")]
-    public Animator animatorJato;
-
     private int indiceFaixaAtual = 1;
 
     void Start()
     {
-        if (pontosFaixa.Length > indiceFaixaAtual && pontosFaixa[indiceFaixaAtual] != null)
+        if (pontosFaixa != null && pontosFaixa.Length > indiceFaixaAtual && pontosFaixa[indiceFaixaAtual] != null)
         {
             transform.position = pontosFaixa[indiceFaixaAtual].position;
         }
     }
 
-    public void OnMove(InputValue value)
+    public void MoverParaEsquerda()
     {
-        Vector2 inputVetor = value.Get<Vector2>();
+        MudarFaixa(-1);
+    }
 
-        if (inputVetor.x < -0.3f)
-        {
-            MudarFaixa(-1);
-        }
-
-        else if (inputVetor.x > 0.3f)
-        {
-            MudarFaixa(1);
-        }
+    public void MoverParaDireita()
+    {
+        MudarFaixa(1);
     }
 
     void MudarFaixa(int direcao)
     {
+        if (pontosFaixa == null || pontosFaixa.Length == 0) return;
+
         int novoIndice = Mathf.Clamp(indiceFaixaAtual + direcao, 0, pontosFaixa.Length - 1);
 
         if (novoIndice != indiceFaixaAtual)
         {
             indiceFaixaAtual = novoIndice;
-
-            if (animatorJato != null)
-            {
-                if (direcao < 0)
-                {
-                    animatorJato.SetTrigger("VirarEsquerda");
-                }
-                else if (direcao > 0)
-                {
-                    animatorJato.SetTrigger("VirarDireita");
-                }
-            }
 
             if (usarTeleporteDireto)
             {
@@ -67,7 +49,7 @@ public class JatoTrocaFaixa : MonoBehaviour
 
     void Update()
     {
-        if (!usarTeleporteDireto && pontosFaixa.Length > 0)
+        if (!usarTeleporteDireto && pontosFaixa != null && pontosFaixa.Length > 0 && pontosFaixa[indiceFaixaAtual] != null)
         {
             Vector3 alvo = pontosFaixa[indiceFaixaAtual].position;
             transform.position = Vector3.MoveTowards(transform.position, alvo, velocidadeTransicao * Time.deltaTime);
