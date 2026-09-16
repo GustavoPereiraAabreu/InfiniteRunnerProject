@@ -40,6 +40,11 @@ public class CanvasStart : MonoBehaviour
         StartCoroutine(GameSequence());
     }
 
+    public static void PararJogo()
+    {
+        jogoIniciado = false;
+    }
+
     IEnumerator GameSequence()
     {
         yield return StartCoroutine(FadeOutText());
