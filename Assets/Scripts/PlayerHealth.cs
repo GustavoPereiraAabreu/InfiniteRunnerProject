@@ -17,12 +17,22 @@ public class PlayerHealth : MonoBehaviour
     public Renderer meshRendererNave;
     public GameObject painelGameOver;
 
+    [Header("Efeitos Sonoros")]
+    public AudioSource audioSource;
+    public AudioClip somDano;     
+    public AudioClip somMorte;      
+
     void Start()
     {
         vidasRestantes = vidas;
         if (painelGameOver != null)
         {
             painelGameOver.SetActive(false);
+        }
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
         }
     }
 
@@ -55,17 +65,35 @@ public class PlayerHealth : MonoBehaviour
         if (vidasRestantes <= 0)
         {
             vidasRestantes = 0;
+
+            TocarSom(somMorte != null ? somMorte : somDano, usarAudio3DNoPonto: true);
+
             Morrer();
         }
         else
         {
+            TocarSom(somDano);
+
             StartCoroutine(RotinaInvulnerabilidade());
+        }
+    }
+
+    private void TocarSom(AudioClip clip, bool usarAudio3DNoPonto = false)
+    {
+        if (clip == null) return;
+
+        if (usarAudio3DNoPonto)
+        {
+            AudioSource.PlayClipAtPoint(clip, transform.position);
+        }
+        else if (audioSource != null)
+        {
+            audioSource.PlayOneShot(clip);
         }
     }
 
     private void Morrer()
     {
-
         CanvasStart.PararJogo();
 
         if (painelGameOver != null)
