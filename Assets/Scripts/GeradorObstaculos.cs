@@ -65,6 +65,7 @@ public class GeradorObstaculos : MonoBehaviour
             posicaoZSpawn
         );
 
-        Instantiate(prefabsObstaculos[obstaculoSorteado], posicaoSpawn, Quaternion.identity);
+        GameObject obstaculo = Instantiate(prefabsObstaculos[obstaculoSorteado], posicaoSpawn, Quaternion.identity);
+        obstaculo.transform.localRotation = Quaternion.Euler(0, 90, 0);
     }
 }
