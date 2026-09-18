@@ -2469,7 +2469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d29894c48e3bd2d4097d5cc1e5f0815d, type: 3}
       propertyPath: m_Name
-      value: JetPlayer
+      value: PlayerJet
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d29894c48e3bd2d4097d5cc1e5f0815d, type: 3}
       propertyPath: m_TagString
@@ -4740,7 +4740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GeradorObstaculos
   prefabsObstaculos:
-  - {fileID: 3922159101537080248, guid: cc202b5da0c13404888985cc4787d2ea, type: 3}
+  - {fileID: 863954949267160924, guid: cc202b5da0c13404888985cc4787d2ea, type: 3}
+  - {fileID: 9045658841874612013, guid: 18e8e5b20e959cf42b3db587c19eed12, type: 3}
   pontosFaixa:
   - {fileID: 1356337944}
   - {fileID: 121010902}
