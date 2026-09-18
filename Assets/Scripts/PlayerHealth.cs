@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -17,14 +18,25 @@ public class PlayerHealth : MonoBehaviour
     public Renderer meshRendererNave;
     public GameObject painelGameOver;
 
+    [Header("UI de Vidas e Distância Fictícia")]
+    public TextMeshProUGUI textoVidas;
+    public TextMeshProUGUI textoDistancia;
+    public TextMeshProUGUI textoDistanciaGameOver;
+
+    [Header("Configuração dos Metros Fakes")]
+    public float multiplicadorMetros = 10f;
+    private float distanciaPercorrida = 0f;
+
     [Header("Efeitos Sonoros")]
     public AudioSource audioSource;
-    public AudioClip somDano;     
-    public AudioClip somMorte;      
+    public AudioClip somDano;
+    public AudioClip somMorte;
 
     void Start()
     {
         vidasRestantes = vidas;
+        AtualizarTextoVidas();
+
         if (painelGameOver != null)
         {
             painelGameOver.SetActive(false);
@@ -34,6 +46,14 @@ public class PlayerHealth : MonoBehaviour
         {
             audioSource = GetComponent<AudioSource>();
         }
+    }
+
+    void Update()
+    {
+        if (!CanvasStart.jogoIniciado || vidasRestantes <= 0) return;
+
+        distanciaPercorrida += Time.deltaTime * multiplicadorMetros;
+        AtualizarTextoDistancia();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,6 +81,7 @@ public class PlayerHealth : MonoBehaviour
     public void TomarDano(int quantidade)
     {
         vidasRestantes -= quantidade;
+        AtualizarTextoVidas();
 
         if (vidasRestantes <= 0)
         {
@@ -75,6 +96,22 @@ public class PlayerHealth : MonoBehaviour
             TocarSom(somDano);
 
             StartCoroutine(RotinaInvulnerabilidade());
+        }
+    }
+
+    private void AtualizarTextoVidas()
+    {
+        if (textoVidas != null)
+        {
+            textoVidas.text = "Vidas: " + vidasRestantes;
+        }
+    }
+
+    private void AtualizarTextoDistancia()
+    {
+        if (textoDistancia != null)
+        {
+            textoDistancia.text = Mathf.FloorToInt(distanciaPercorrida) + " m";
         }
     }
 
@@ -95,6 +132,11 @@ public class PlayerHealth : MonoBehaviour
     private void Morrer()
     {
         CanvasStart.PararJogo();
+
+        if (textoDistanciaGameOver != null)
+        {
+            textoDistanciaGameOver.text = "Distância: " + Mathf.FloorToInt(distanciaPercorrida) + " m";
+        }
 
         if (painelGameOver != null)
         {
