@@ -11,6 +11,7 @@ public class PausarJogo : MonoBehaviour
     void Update()
     {
         if (!CanvasStart.jogoIniciado) return;
+
         if (Keyboard.current != null &&
            (Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.pKey.wasPressedThisFrame))
         {
@@ -30,6 +31,9 @@ public class PausarJogo : MonoBehaviour
         estaPausado = true;
         Time.timeScale = 0f;
         AudioListener.pause = true;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         if (painelPause != null)
         {

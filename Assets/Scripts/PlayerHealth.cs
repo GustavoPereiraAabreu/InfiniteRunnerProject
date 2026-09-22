@@ -133,6 +133,11 @@ public class PlayerHealth : MonoBehaviour
     {
         CanvasStart.PararJogo();
 
+        AudioListener.pause = false;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (textoDistanciaGameOver != null)
         {
             textoDistanciaGameOver.text = "Distância: " + Mathf.FloorToInt(distanciaPercorrida) + " m";

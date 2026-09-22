@@ -2,11 +2,13 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class CanvasStart : MonoBehaviour
 {
-    [Header("HUD")]
+    [Header("HUD / UI")]
     public CanvasGroup startText;
+    public GameObject painelMenuInicial;
 
     [Header("Cameras")]
     public Camera introCamera;
@@ -30,6 +32,9 @@ public class CanvasStart : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         if (playerController != null)
         {
             playerController.SetActive(false);
@@ -40,6 +45,11 @@ public class CanvasStart : MonoBehaviour
     {
         if (!started)
         {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
+
             if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
             {
                 StartGame();
@@ -68,6 +78,12 @@ public class CanvasStart : MonoBehaviour
     IEnumerator GameSequence()
     {
         yield return StartCoroutine(FadeOutText());
+
+        if (painelMenuInicial != null)
+        {
+            painelMenuInicial.SetActive(false);
+        }
+
         yield return StartCoroutine(MoveCameraToPlayer());
 
         if (playerController != null)
@@ -106,6 +122,7 @@ public class CanvasStart : MonoBehaviour
         if (startText != null)
         {
             startText.alpha = 0f;
+            startText.blocksRaycasts = false;
         }
     }
 
