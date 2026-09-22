@@ -8,8 +8,11 @@ public class ObstaculoMovimento : MonoBehaviour
     public float ganhoVelocidadePorSegundo = 0.5f;
 
     [Header("Destruição Automática")]
-    public bool destruirAoPassar = false;
+    public bool destruirAoPassar = true;
     public float limiteZDestruicao = -20f;
+
+    [Header("Efeitos Sonoros")]
+    public AudioSource audioSource;
 
     private static float velocidadeAtual;
 
@@ -18,6 +21,11 @@ public class ObstaculoMovimento : MonoBehaviour
         if (velocidadeAtual < velocidadeInicial)
         {
             velocidadeAtual = velocidadeInicial;
+        }
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
         }
     }
 
@@ -34,7 +42,17 @@ public class ObstaculoMovimento : MonoBehaviour
 
         if (destruirAoPassar && transform.position.z < limiteZDestruicao)
         {
-            Destroy(gameObject);
+            DestruirObstaculo();
         }
+    }
+
+    public void DestruirObstaculo()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
+        Destroy(gameObject);
     }
 }

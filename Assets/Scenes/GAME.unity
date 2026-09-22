@@ -4740,8 +4740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GeradorObstaculos
   prefabsObstaculos:
-  - {fileID: 863954949267160924, guid: cc202b5da0c13404888985cc4787d2ea, type: 3}
-  - {fileID: 9045658841874612013, guid: 18e8e5b20e959cf42b3db587c19eed12, type: 3}
+  - {fileID: 6996116032824978355, guid: cc202b5da0c13404888985cc4787d2ea, type: 3}
+  - {fileID: 3631871835623699414, guid: 18e8e5b20e959cf42b3db587c19eed12, type: 3}
   pontosFaixa:
   - {fileID: 1356337944}
   - {fileID: 121010902}
