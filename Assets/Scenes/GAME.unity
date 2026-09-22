@@ -4747,10 +4747,10 @@ MonoBehaviour:
   - {fileID: 121010902}
   - {fileID: 1378964377}
   posicaoZSpawn: 100
-  intervaloSpawnInicial: 3
-  intervaloSpawnMinimo: 0.8
-  variacaoTempo: 0.2
-  taxaAceleracao: 0.05
+  intervaloSpawnInicial: 5
+  intervaloSpawnMinimo: 0.6
+  variacaoTempo: 1
+  taxaAceleracao: 0.1
 --- !u!65 &1810033316
 BoxCollider:
   m_ObjectHideFlags: 0
