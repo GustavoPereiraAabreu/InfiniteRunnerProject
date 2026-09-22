@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class JatoTrocaFaixa : MonoBehaviour
+public class MovimentoJato : MonoBehaviour
 {
     [Header("Pontos de Posição (Faixas)")]
     public Transform[] pontosFaixa;
