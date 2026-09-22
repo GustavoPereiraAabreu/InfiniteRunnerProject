@@ -9,6 +9,8 @@ public class PausarJogo : MonoBehaviour
     {
         Time.timeScale = 0f;
 
+        AudioListener.pause = true;
+
         if (painelPause != null)
         {
             painelPause.SetActive(true);
@@ -18,6 +20,8 @@ public class PausarJogo : MonoBehaviour
     public void Continuar()
     {
         Time.timeScale = 1f;
+
+        AudioListener.pause = false;
 
         if (painelPause != null)
         {
