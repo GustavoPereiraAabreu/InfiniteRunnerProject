@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class CanvasStart : MonoBehaviour
 {
@@ -29,7 +30,26 @@ public class CanvasStart : MonoBehaviour
 
     void Start()
     {
-        playerController.SetActive(false);
+        if (playerController != null)
+        {
+            playerController.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (!started)
+        {
+            if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                StartGame();
+            }
+
+            else if (Keyboard.current != null && (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.enterKey.wasPressedThisFrame))
+            {
+                StartGame();
+            }
+        }
     }
 
     public void StartGame()
@@ -50,8 +70,15 @@ public class CanvasStart : MonoBehaviour
         yield return StartCoroutine(FadeOutText());
         yield return StartCoroutine(MoveCameraToPlayer());
 
-        playerController.SetActive(true);
-        introCamera.gameObject.SetActive(false);
+        if (playerController != null)
+        {
+            playerController.SetActive(true);
+        }
+
+        if (introCamera != null)
+        {
+            introCamera.gameObject.SetActive(false);
+        }
 
         jogoIniciado = true;
 
@@ -69,32 +96,41 @@ public class CanvasStart : MonoBehaviour
         while (t < textFadeDuration)
         {
             t += Time.deltaTime;
-            startText.alpha = Mathf.Lerp(1f, 0f, t / textFadeDuration);
+            if (startText != null)
+            {
+                startText.alpha = Mathf.Lerp(1f, 0f, t / textFadeDuration);
+            }
             yield return null;
         }
 
-        startText.alpha = 0f;
+        if (startText != null)
+        {
+            startText.alpha = 0f;
+        }
     }
 
     IEnumerator MoveCameraToPlayer()
     {
-        Vector3 startPos = introCamera.transform.position;
-        Quaternion startRot = introCamera.transform.rotation;
-
-        float t = 0f;
-
-        while (t < cameraMoveDuration)
+        if (introCamera != null && playerCameraTarget != null)
         {
-            t += Time.deltaTime;
-            float progress = t / cameraMoveDuration;
+            Vector3 startPos = introCamera.transform.position;
+            Quaternion startRot = introCamera.transform.rotation;
 
-            introCamera.transform.position = Vector3.Lerp(startPos, playerCameraTarget.position, progress);
-            introCamera.transform.rotation = Quaternion.Slerp(startRot, playerCameraTarget.rotation, progress);
+            float t = 0f;
 
-            yield return null;
+            while (t < cameraMoveDuration)
+            {
+                t += Time.deltaTime;
+                float progress = t / cameraMoveDuration;
+
+                introCamera.transform.position = Vector3.Lerp(startPos, playerCameraTarget.position, progress);
+                introCamera.transform.rotation = Quaternion.Slerp(startRot, playerCameraTarget.rotation, progress);
+
+                yield return null;
+            }
+
+            introCamera.transform.position = playerCameraTarget.position;
+            introCamera.transform.rotation = playerCameraTarget.rotation;
         }
-
-        introCamera.transform.position = playerCameraTarget.position;
-        introCamera.transform.rotation = playerCameraTarget.rotation;
     }
 }

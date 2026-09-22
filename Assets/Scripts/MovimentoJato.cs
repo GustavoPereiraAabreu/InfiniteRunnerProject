@@ -49,6 +49,32 @@ public class MovimentoJato : MonoBehaviour
 
     void Update()
     {
+        if (!CanvasStart.jogoIniciado) return;
+
+        if (Keyboard.current != null)
+        {
+            if (Keyboard.current.aKey.wasPressedThisFrame || Keyboard.current.leftArrowKey.wasPressedThisFrame)
+            {
+                MoverParaEsquerda();
+            }
+            if (Keyboard.current.dKey.wasPressedThisFrame || Keyboard.current.rightArrowKey.wasPressedThisFrame)
+            {
+                MoverParaDireita();
+            }
+        }
+
+        if (Mouse.current != null)
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                MoverParaEsquerda();
+            }
+            else if (Mouse.current.rightButton.wasPressedThisFrame)
+            {
+                MoverParaDireita();
+            }
+        }
+
         if (!usarTeleporteDireto && pontosFaixa != null && pontosFaixa.Length > 0 && pontosFaixa[indiceFaixaAtual] != null)
         {
             Vector3 alvo = pontosFaixa[indiceFaixaAtual].position;

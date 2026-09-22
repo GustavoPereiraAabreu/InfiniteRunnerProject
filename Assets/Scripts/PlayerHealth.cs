@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -32,6 +34,8 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip somDano;
     public AudioClip somMorte;
 
+    private bool isDead = false;
+
     void Start()
     {
         vidasRestantes = vidas;
@@ -50,6 +54,15 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        if (isDead)
+        {
+            if (Keyboard.current != null && Keyboard.current.rKey.wasPressedThisFrame)
+            {
+                ReiniciarCena();
+            }
+            return;
+        }
+
         if (!CanvasStart.jogoIniciado || vidasRestantes <= 0) return;
 
         distanciaPercorrida += Time.deltaTime * multiplicadorMetros;
@@ -73,7 +86,6 @@ public class PlayerHealth : MonoBehaviour
         if (objetoColidido.CompareTag(tagObstaculo) || objetoColidido.GetComponent<ObstaculoMovimento>() != null)
         {
             TomarDano(1);
-
             Destroy(objetoColidido);
         }
     }
@@ -86,15 +98,12 @@ public class PlayerHealth : MonoBehaviour
         if (vidasRestantes <= 0)
         {
             vidasRestantes = 0;
-
             TocarSom(somMorte != null ? somMorte : somDano, usarAudio3DNoPonto: true);
-
             Morrer();
         }
         else
         {
             TocarSom(somDano);
-
             StartCoroutine(RotinaInvulnerabilidade());
         }
     }
@@ -131,7 +140,10 @@ public class PlayerHealth : MonoBehaviour
 
     private void Morrer()
     {
+        isDead = true;
         CanvasStart.PararJogo();
+
+        AudioListener.pause = false;
 
         if (textoDistanciaGameOver != null)
         {
@@ -143,7 +155,17 @@ public class PlayerHealth : MonoBehaviour
             painelGameOver.SetActive(true);
         }
 
-        gameObject.SetActive(false);
+        if (meshRendererNave != null)
+        {
+            meshRendererNave.enabled = false;
+        }
+    }
+
+    public void ReiniciarCena()
+    {
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     IEnumerator RotinaInvulnerabilidade()
