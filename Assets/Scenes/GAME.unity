@@ -1359,7 +1359,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 9d14e72c174dde846b4e993fed01f7cf, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.225
+  m_Volume: 0.038
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1556,7 +1556,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.476
+  m_Volume: 0.043
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2626,10 +2626,10 @@ MonoBehaviour:
   textoVidas: {fileID: 1729146266}
   textoDistancia: {fileID: 250852273}
   textoDistanciaGameOver: {fileID: 1517946609}
-  multiplicadorMetros: 10
+  multiplicadorMetros: 5
   audioSource: {fileID: 563984796}
   somDano: {fileID: 8300000, guid: f06232b52c98b68458e549dc3eaef722, type: 3}
-  somMorte: {fileID: 8300000, guid: 8a26cf865ec05ff41a825d391b2cfcb4, type: 3}
+  somMorte: {fileID: 0}
 --- !u!23 &978596483 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d29894c48e3bd2d4097d5cc1e5f0815d, type: 3}

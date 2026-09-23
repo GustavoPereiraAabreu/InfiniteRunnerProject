@@ -392,7 +392,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.476
+  m_Volume: 0.112
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -521,7 +521,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 9d14e72c174dde846b4e993fed01f7cf, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.225
+  m_Volume: 0.022
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1769,7 +1769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d29894c48e3bd2d4097d5cc1e5f0815d, type: 3}
       propertyPath: m_Name
-      value: JetPlayer
+      value: PlayerJet
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d29894c48e3bd2d4097d5cc1e5f0815d, type: 3}
       propertyPath: m_TagString
@@ -1901,6 +1901,10 @@ MonoBehaviour:
   tempoInvulneravel: 2
   meshRendererNave: {fileID: 6348646099072467274}
   painelGameOver: {fileID: 0}
+  textoVidas: {fileID: 0}
+  textoDistancia: {fileID: 0}
+  textoDistanciaGameOver: {fileID: 0}
+  multiplicadorMetros: 10
   audioSource: {fileID: 2429434618582177033}
   somDano: {fileID: 8300000, guid: f06232b52c98b68458e549dc3eaef722, type: 3}
   somMorte: {fileID: 8300000, guid: 8a26cf865ec05ff41a825d391b2cfcb4, type: 3}
