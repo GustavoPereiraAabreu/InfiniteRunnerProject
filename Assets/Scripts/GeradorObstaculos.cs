@@ -5,6 +5,9 @@ public class GeradorObstaculos : MonoBehaviour
     [Header("Prefabs dos Obstáculos")]
     public GameObject[] prefabsObstaculos;
 
+    [Header("Item Coletável Míssil")]
+    public GameObject prefabItemMissil;
+
     [Header("Faixas (Posições X e Y)")]
     public Transform[] pontosFaixa;
 
@@ -24,7 +27,7 @@ public class GeradorObstaculos : MonoBehaviour
     private float cronometro = 0f;
     private bool gerando = false;
 
-    private int ultimaFaixa = -1;
+    private int ultimaFaixaObstaculo = -1;
 
     void Start()
     {
@@ -53,7 +56,7 @@ public class GeradorObstaculos : MonoBehaviour
 
         if (cronometro >= proximoIntervalo)
         {
-            SpawnObstaculo();
+            SpawnObjeto();
             cronometro = 0f;
             CalcularProximoIntervalo();
         }
@@ -65,34 +68,54 @@ public class GeradorObstaculos : MonoBehaviour
         proximoIntervalo = Mathf.Max(intervaloSpawnMinimo, intervaloSpawnAtual + offset);
     }
 
-    void SpawnObstaculo()
+    void SpawnObjeto()
     {
-        if (prefabsObstaculos.Length == 0 || pontosFaixa.Length == 0) return;
+        if (pontosFaixa.Length == 0) return;
 
-        int faixaSorteada;
+        int faixaObstaculo;
         if (pontosFaixa.Length > 1)
         {
             do
             {
-                faixaSorteada = Random.Range(0, pontosFaixa.Length);
-            } while (faixaSorteada == ultimaFaixa);
+                faixaObstaculo = Random.Range(0, pontosFaixa.Length);
+            } while (faixaObstaculo == ultimaFaixaObstaculo);
         }
         else
         {
-            faixaSorteada = 0;
+            faixaObstaculo = 0;
         }
 
-        ultimaFaixa = faixaSorteada;
+        ultimaFaixaObstaculo = faixaObstaculo;
 
-        int obstaculoSorteado = Random.Range(0, prefabsObstaculos.Length);
+        if (prefabsObstaculos.Length > 0)
+        {
+            int obstaculoSorteado = Random.Range(0, prefabsObstaculos.Length);
+            Vector3 posObstaculo = new Vector3(
+                pontosFaixa[faixaObstaculo].position.x,
+                pontosFaixa[faixaObstaculo].position.y,
+                posicaoZSpawn
+            );
 
-        Vector3 posicaoSpawn = new Vector3(
-            pontosFaixa[faixaSorteada].position.x,
-            pontosFaixa[faixaSorteada].position.y,
-            posicaoZSpawn
-        );
+            GameObject obstaculo = Instantiate(prefabsObstaculos[obstaculoSorteado], posObstaculo, Quaternion.identity);
+            obstaculo.transform.localRotation = Quaternion.Euler(0, 90, 0);
+        }
 
-        GameObject obstaculo = Instantiate(prefabsObstaculos[obstaculoSorteado], posicaoSpawn, Quaternion.identity);
-        obstaculo.transform.localRotation = Quaternion.Euler(0, 90, 0);
+        if (prefabItemMissil != null && pontosFaixa.Length > 1)
+        {
+            int faixaMissil;
+            do
+            {
+                faixaMissil = Random.Range(0, pontosFaixa.Length);
+            } while (faixaMissil == faixaObstaculo);
+
+            Vector3 posMissil = new Vector3(
+                pontosFaixa[faixaMissil].position.x,
+                pontosFaixa[faixaMissil].position.y,
+                posicaoZSpawn
+            );
+
+            GameObject item = Instantiate(prefabItemMissil, posMissil, Quaternion.identity);
+            item.transform.localRotation = Quaternion.identity;
+        }
     }
 }

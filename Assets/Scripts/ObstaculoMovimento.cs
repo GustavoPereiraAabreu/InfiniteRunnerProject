@@ -14,7 +14,7 @@ public class ObstaculoMovimento : MonoBehaviour
     [Header("Efeitos Sonoros")]
     public AudioSource audioSource;
 
-    private static float velocidadeAtual;
+    public static float velocidadeAtual;
 
     void Start()
     {
