@@ -20,11 +20,10 @@ public class PlayerAcoes : MonoBehaviour
         if (!CanvasStart.jogoIniciado) return;
 
         Vector3 posicaoSpawn = pontoDisparo != null ? pontoDisparo.position : transform.position + transform.forward * 2f;
-        Quaternion rotacaoSpawn = pontoDisparo != null ? pontoDisparo.rotation : transform.rotation;
 
         if (prefabMissilProjetil != null)
         {
-            Instantiate(prefabMissilProjetil, posicaoSpawn, rotacaoSpawn);
+            Instantiate(prefabMissilProjetil, posicaoSpawn, Quaternion.identity);
         }
 
         if (somDisparo != null && audioSource != null)

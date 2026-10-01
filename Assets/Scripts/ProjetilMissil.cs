@@ -17,13 +17,24 @@ public class ProjetilMissil : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.forward * velocidade * Time.deltaTime, Space.Self);
+        transform.Translate(Vector3.forward * velocidade * Time.deltaTime, Space.World);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        ObstaculoMovimento obstaculo = other.GetComponent<ObstaculoMovimento>();
-        if (obstaculo != null || other.CompareTag("Obstaculo"))
+        ProcessarColisao(other.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ProcessarColisao(collision.gameObject);
+    }
+
+    void ProcessarColisao(GameObject objetoAtingido)
+    {
+        ObstaculoMovimento obstaculo = objetoAtingido.GetComponentInParent<ObstaculoMovimento>();
+
+        if (obstaculo != null || objetoAtingido.CompareTag("Obstaculo"))
         {
             Explodir();
 
@@ -33,7 +44,7 @@ public class ProjetilMissil : MonoBehaviour
             }
             else
             {
-                Destroy(other.gameObject);
+                Destroy(objetoAtingido);
             }
 
             Destroy(gameObject);

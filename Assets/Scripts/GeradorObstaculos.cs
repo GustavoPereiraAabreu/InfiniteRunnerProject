@@ -7,6 +7,7 @@ public class GeradorObstaculos : MonoBehaviour
 
     [Header("Item Coletável Míssil")]
     public GameObject prefabItemMissil;
+    [Range(0f, 1f)] public float chanceSpawnMissil = 0.2f;
 
     [Header("Faixas (Posições X e Y)")]
     public Transform[] pontosFaixa;
@@ -100,7 +101,7 @@ public class GeradorObstaculos : MonoBehaviour
             obstaculo.transform.localRotation = Quaternion.Euler(0, 90, 0);
         }
 
-        if (prefabItemMissil != null && pontosFaixa.Length > 1)
+        if (prefabItemMissil != null && pontosFaixa.Length > 1 && Random.value <= chanceSpawnMissil)
         {
             int faixaMissil;
             do
