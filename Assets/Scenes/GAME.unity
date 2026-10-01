@@ -4798,7 +4798,7 @@ MonoBehaviour:
   prefabsObstaculos:
   - {fileID: 6996116032824978355, guid: cc202b5da0c13404888985cc4787d2ea, type: 3}
   - {fileID: 3631871835623699414, guid: 18e8e5b20e959cf42b3db587c19eed12, type: 3}
-  prefabItemMissil: {fileID: 8706042580797707624, guid: b276ec80aba253b46b246340a4e6bd68, type: 3}
+  prefabItemMissil: {fileID: 8706042580797707624, guid: a3643ea5156ea704ba35d899c2868c50, type: 3}
   pontosFaixa:
   - {fileID: 1378964377}
   - {fileID: 121010902}

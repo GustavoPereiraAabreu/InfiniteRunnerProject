@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4165415246816862557}
   - component: {fileID: 891902581454548718}
   - component: {fileID: 5792073337722576475}
-  - component: {fileID: 6235085759539687483}
+  - component: {fileID: 5078897942649779642}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6235085759539687483
+--- !u!114 &5078897942649779642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,10 +121,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8706042580797707624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 262d1f40d19e0084682c9f239da7ad4b, type: 3}
+  m_Script: {fileID: 11500000, guid: c3a254979c56d5647a077f7dfb4b1b3f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ProjetilMissil
-  velocidade: 60
-  tempoVida: 5
-  efeitoExplosao: {fileID: 0}
-  somExplosao: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::ItemMissil
+  velocidadeRotacao: 100
+  limiteZDestruicao: -20
+  somColeta: {fileID: 0}
