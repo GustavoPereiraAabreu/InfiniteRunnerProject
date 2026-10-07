@@ -437,7 +437,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208572775}
   m_LocalRotation: {x: -1.7763568e-15, y: -1.7347235e-17, z: 0.0014045911, w: 0.99999905}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3.2534943, y: 3.2534943, z: 3.2534943}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -446,7 +446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.161}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 40, y: -16}
+  m_AnchoredPosition: {x: 53, y: -16}
   m_SizeDelta: {x: 203.522, y: 56.179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &208572777
@@ -2736,8 +2736,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99299dd842230194b901723cacaa7370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAcoes
-  prefabMissilProjetil: {fileID: 8706042580797707624, guid: b276ec80aba253b46b246340a4e6bd68, type: 3}
+  prefabMissilProjetil: {fileID: 4173569355950683130, guid: d7f4923fbe56d1b43984112d299bd186, type: 3}
   pontoDisparo: {fileID: 206161393}
+  rotacalAdicionalEuler: {x: -90, y: 0, z: 0}
   somDisparo: {fileID: 0}
 --- !u!1 &1030939681
 GameObject:
@@ -3101,7 +3102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -22}
+  m_AnchoredPosition: {x: 19, y: -22}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1102318969
@@ -3558,7 +3559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 397, y: 534}
+  m_AnchoredPosition: {x: 386, y: 534}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1137881567
@@ -4391,7 +4392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -87, y: -325}
+  m_AnchoredPosition: {x: -94, y: -325}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517946609
@@ -4798,7 +4799,7 @@ MonoBehaviour:
   prefabsObstaculos:
   - {fileID: 6996116032824978355, guid: cc202b5da0c13404888985cc4787d2ea, type: 3}
   - {fileID: 3631871835623699414, guid: 18e8e5b20e959cf42b3db587c19eed12, type: 3}
-  prefabItemMissil: {fileID: 8706042580797707624, guid: a3643ea5156ea704ba35d899c2868c50, type: 3}
+  prefabItemMissil: {fileID: 647905068698103841, guid: 4142562803629374a838118567bbc529, type: 3}
   chanceSpawnMissil: 0.202
   pontosFaixa:
   - {fileID: 1378964377}

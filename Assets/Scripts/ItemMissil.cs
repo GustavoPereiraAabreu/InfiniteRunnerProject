@@ -15,7 +15,7 @@ public class ItemMissil : MonoBehaviour
 
         transform.Rotate(Vector3.up * velocidadeRotacao * Time.deltaTime, Space.World);
 
-        transform.Translate(0, 0, -ObstaculoMovimento.velocidadeAtual * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.back * ObstaculoMovimento.velocidadeAtual * Time.deltaTime, Space.World);
 
         if (transform.position.z < limiteZDestruicao)
         {
