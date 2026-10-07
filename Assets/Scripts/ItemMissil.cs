@@ -6,9 +6,6 @@ public class ItemMissil : MonoBehaviour
     public float velocidadeRotacao = 100f;
     public float limiteZDestruicao = -20f;
 
-    [Header("Efeitos")]
-    public AudioClip somColeta;
-
     void Update()
     {
         if (!CanvasStart.jogoIniciado) return;
@@ -31,11 +28,6 @@ public class ItemMissil : MonoBehaviour
             if (player != null)
             {
                 player.ColetarEDispararMissil();
-            }
-
-            if (somColeta != null)
-            {
-                AudioSource.PlayClipAtPoint(somColeta, transform.position);
             }
 
             Destroy(gameObject);

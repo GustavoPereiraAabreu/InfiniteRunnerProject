@@ -6,9 +6,11 @@ public class ProjetilMissil : MonoBehaviour
     public float velocidade = 60f;
     public float tempoVida = 4f;
 
-    [Header("Efeitos")]
+    [Header("Efeitos Visuais")]
     public GameObject efeitoExplosao;
-    public AudioClip somExplosao;
+
+    [Header("Efeitos Sonoros")]
+    public AudioSource audioSourceExplosaoPrefab;
 
     void Start()
     {
@@ -58,9 +60,12 @@ public class ProjetilMissil : MonoBehaviour
             Instantiate(efeitoExplosao, transform.position, Quaternion.identity);
         }
 
-        if (somExplosao != null)
+        if (audioSourceExplosaoPrefab != null)
         {
-            AudioSource.PlayClipAtPoint(somExplosao, transform.position);
+            AudioSource novaFonte = Instantiate(audioSourceExplosaoPrefab, transform.position, Quaternion.identity);
+            novaFonte.Play();
+
+            Destroy(novaFonte.gameObject, novaFonte.clip != null ? novaFonte.clip.length : 2f);
         }
     }
 }

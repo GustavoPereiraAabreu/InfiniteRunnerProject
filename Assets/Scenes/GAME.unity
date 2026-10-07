@@ -407,7 +407,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 930379577}
   m_Father: {fileID: 978596475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &208572775
@@ -2234,6 +2235,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886762067}
   m_CullTransparentMesh: 1
+--- !u!1 &930379576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 930379577}
+  - component: {fileID: 930379578}
+  m_Layer: 0
+  m_Name: Sound Dispary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &930379577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930379576}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 206161393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &930379578
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930379576}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 3714943dd4df2214b9b0d3a7e86d79b7, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.267
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &937223873
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,10 +2866,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99299dd842230194b901723cacaa7370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAcoes
-  prefabMissilProjetil: {fileID: 4173569355950683130, guid: d7f4923fbe56d1b43984112d299bd186, type: 3}
+  prefabMissilProjetil: {fileID: 3353394748816227304, guid: d7f4923fbe56d1b43984112d299bd186, type: 3}
   pontoDisparo: {fileID: 206161393}
   rotacalAdicionalEuler: {x: -90, y: 0, z: 0}
-  somDisparo: {fileID: 0}
+  audioSourceDisparo: {fileID: 930379578}
 --- !u!1 &1030939681
 GameObject:
   m_ObjectHideFlags: 0
@@ -4799,7 +4929,7 @@ MonoBehaviour:
   prefabsObstaculos:
   - {fileID: 6996116032824978355, guid: cc202b5da0c13404888985cc4787d2ea, type: 3}
   - {fileID: 3631871835623699414, guid: 18e8e5b20e959cf42b3db587c19eed12, type: 3}
-  prefabItemMissil: {fileID: 647905068698103841, guid: 4142562803629374a838118567bbc529, type: 3}
+  prefabItemMissil: {fileID: 7326224517711094272, guid: 4142562803629374a838118567bbc529, type: 3}
   chanceSpawnMissil: 0.202
   pontosFaixa:
   - {fileID: 1378964377}
@@ -4808,8 +4938,8 @@ MonoBehaviour:
   posicaoZSpawn: 100
   intervaloSpawnInicial: 2.5
   intervaloSpawnMinimo: 0.6
-  variacaoTempo: 0.3
-  taxaAceleracao: 0.05
+  variacaoTempo: 0.6
+  taxaAceleracao: 0.07
 --- !u!65 &1810033316
 BoxCollider:
   m_ObjectHideFlags: 0

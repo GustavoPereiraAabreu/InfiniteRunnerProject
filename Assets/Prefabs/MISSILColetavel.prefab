@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &305325496233741680
+--- !u!1001 &7596046122395656017
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75acb899eb0b2904e9e9e77077d655ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.874
+      value: 476.05765
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75acb899eb0b2904e9e9e77077d655ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.263
+      value: 1130.2136
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75acb899eb0b2904e9e9e77077d655ab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.974
+      value: -44.29036
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75acb899eb0b2904e9e9e77077d655ab, type: 3}
       propertyPath: m_LocalRotation.w
@@ -74,23 +74,23 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 75acb899eb0b2904e9e9e77077d655ab, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6114601419491019468}
+      addedObject: {fileID: 697426013575021519}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 75acb899eb0b2904e9e9e77077d655ab, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6970133592466278999}
+      addedObject: {fileID: 5389315292904717245}
   m_SourcePrefab: {fileID: 100100000, guid: 75acb899eb0b2904e9e9e77077d655ab, type: 3}
---- !u!1 &647905068698103841 stripped
+--- !u!1 &7326224517711094272 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 75acb899eb0b2904e9e9e77077d655ab, type: 3}
-  m_PrefabInstance: {fileID: 305325496233741680}
+  m_PrefabInstance: {fileID: 7596046122395656017}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6114601419491019468
+--- !u!114 &697426013575021519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647905068698103841}
+  m_GameObject: {fileID: 7326224517711094272}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3a254979c56d5647a077f7dfb4b1b3f, type: 3}
@@ -98,14 +98,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemMissil
   velocidadeRotacao: 100
   limiteZDestruicao: -20
-  somColeta: {fileID: 0}
---- !u!65 &6970133592466278999
+--- !u!65 &5389315292904717245
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647905068698103841}
+  m_GameObject: {fileID: 7326224517711094272}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

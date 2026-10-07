@@ -9,13 +9,15 @@ public class PlayerAcoes : MonoBehaviour
     [Header("Ajuste de Rotação Visual")]
     public Vector3 rotacalAdicionalEuler = new Vector3(-90f, 0f, 0f);
 
-    [Header("Efeitos")]
-    public AudioClip somDisparo;
-    private AudioSource audioSource;
+    [Header("Efeitos Sonoros")]
+    public AudioSource audioSourceDisparo;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (audioSourceDisparo == null)
+        {
+            audioSourceDisparo = GetComponent<AudioSource>();
+        }
     }
 
     public void ColetarEDispararMissil()
@@ -31,9 +33,9 @@ public class PlayerAcoes : MonoBehaviour
             Instantiate(prefabMissilProjetil, posicaoSpawn, rotacaoCorreta);
         }
 
-        if (somDisparo != null && audioSource != null)
+        if (audioSourceDisparo != null && audioSourceDisparo.clip != null)
         {
-            audioSource.PlayOneShot(somDisparo);
+            audioSourceDisparo.Play();
         }
     }
 }
