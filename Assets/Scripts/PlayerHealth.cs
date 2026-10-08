@@ -11,8 +11,15 @@ public class PlayerHealth : MonoBehaviour
     private string tagObstaculo = "Obstaculo";
 
     [Header("Tempo de Proteção pós-Dano")]
-    public float tempoInvulneravel = 1.5f;
+    public int tempoInvulneravel = 30;
     private bool isInvulneravel = false;
+
+    [Header("Sistema de Escudo")]
+    public bool temEscudoAtivo = false;
+    public GameObject efeitoVisualEscudo;
+    public AudioClip somColetarEscudo;
+    public AudioClip somEscudoProtegeu;
+    private Coroutine corrotinaEscudo;
 
     [Header("Efeito Visual e UI")]
     public Renderer meshRendererNave;
@@ -42,6 +49,11 @@ public class PlayerHealth : MonoBehaviour
             painelGameOver.SetActive(false);
         }
 
+        if (efeitoVisualEscudo != null)
+        {
+            efeitoVisualEscudo.SetActive(false);
+        }
+
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
@@ -68,13 +80,64 @@ public class PlayerHealth : MonoBehaviour
 
     void VerificarColisao(GameObject objetoColidido)
     {
-        if (!CanvasStart.jogoIniciado || isInvulneravel) return;
+        if (!CanvasStart.jogoIniciado) return;
 
         if (objetoColidido.CompareTag(tagObstaculo) || objetoColidido.GetComponent<ObstaculoMovimento>() != null)
         {
-            TomarDano(1);
+            if (temEscudoAtivo)
+            {
+                TocarSom(somEscudoProtegeu);
 
+                Destroy(objetoColidido);
+                return;
+            }
+
+            if (isInvulneravel) return;
+
+            TomarDano(1);
             Destroy(objetoColidido);
+        }
+    }
+
+    public void AtivarEscudo(float duracao)
+    {
+        TocarSom(somColetarEscudo);
+
+        if (corrotinaEscudo != null)
+        {
+            StopCoroutine(corrotinaEscudo);
+        }
+
+        corrotinaEscudo = StartCoroutine(RotinaTemporizadorEscudo(duracao));
+    }
+
+    private IEnumerator RotinaTemporizadorEscudo(float duracao)
+    {
+        temEscudoAtivo = true;
+
+        if (efeitoVisualEscudo != null)
+        {
+            efeitoVisualEscudo.SetActive(true);
+        }
+
+        yield return new WaitForSeconds(duracao);
+
+        DesativarEscudo();
+    }
+
+    private void DesativarEscudo()
+    {
+        temEscudoAtivo = false;
+
+        if (efeitoVisualEscudo != null)
+        {
+            efeitoVisualEscudo.SetActive(false);
+        }
+
+        if (corrotinaEscudo != null)
+        {
+            StopCoroutine(corrotinaEscudo);
+            corrotinaEscudo = null;
         }
     }
 
@@ -86,15 +149,12 @@ public class PlayerHealth : MonoBehaviour
         if (vidasRestantes <= 0)
         {
             vidasRestantes = 0;
-
             TocarSom(somMorte != null ? somMorte : somDano, usarAudio3DNoPonto: true);
-
             Morrer();
         }
         else
         {
             TocarSom(somDano);
-
             StartCoroutine(RotinaInvulnerabilidade());
         }
     }

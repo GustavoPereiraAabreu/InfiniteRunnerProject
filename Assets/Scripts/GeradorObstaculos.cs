@@ -9,6 +9,10 @@ public class GeradorObstaculos : MonoBehaviour
     public GameObject prefabItemMissil;
     [Range(0f, 1f)] public float chanceSpawnMissil = 0.2f;
 
+    [Header("Item Coletável Escudo")]
+    public GameObject prefabItemEscudo;
+    [Range(0f, 1f)] public float chanceSpawnEscudo = 0.15f;
+
     [Header("Faixas (Posições X e Y)")]
     public Transform[] pontosFaixa;
 
@@ -101,9 +105,11 @@ public class GeradorObstaculos : MonoBehaviour
             obstaculo.transform.localRotation = Quaternion.Euler(0, 90, 0);
         }
 
+        bool missilGerado = false;
+        int faixaMissil = -1;
+
         if (prefabItemMissil != null && pontosFaixa.Length > 1 && Random.value <= chanceSpawnMissil)
         {
-            int faixaMissil;
             do
             {
                 faixaMissil = Random.Range(0, pontosFaixa.Length);
@@ -117,6 +123,30 @@ public class GeradorObstaculos : MonoBehaviour
 
             GameObject item = Instantiate(prefabItemMissil, posMissil, Quaternion.identity);
             item.transform.localRotation = Quaternion.identity;
+            missilGerado = true;
+        }
+
+        if (prefabItemEscudo != null && pontosFaixa.Length > 1 && Random.value <= chanceSpawnEscudo)
+        {
+            int faixaEscudo;
+            int tentativas = 0;
+            do
+            {
+                faixaEscudo = Random.Range(0, pontosFaixa.Length);
+                tentativas++;
+            } while ((faixaEscudo == faixaObstaculo || (missilGerado && faixaEscudo == faixaMissil)) && tentativas < 10);
+
+            if (faixaEscudo != faixaObstaculo && (!missilGerado || faixaEscudo != faixaMissil))
+            {
+                Vector3 posEscudo = new Vector3(
+                    pontosFaixa[faixaEscudo].position.x,
+                    pontosFaixa[faixaEscudo].position.y,
+                    posicaoZSpawn
+                );
+
+                GameObject escudoItem = Instantiate(prefabItemEscudo, posEscudo, Quaternion.identity);
+                escudoItem.transform.localRotation = Quaternion.identity;
+            }
         }
     }
 }
