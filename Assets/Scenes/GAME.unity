@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241e1525236f236489c9f895fadf62bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemEscudo
-  duracaoEscudo: 30
+  duracaoEscudo: 10
   limiteZDestruicao: -20
 --- !u!65 &23409742
 BoxCollider:
@@ -5175,7 +5175,7 @@ MonoBehaviour:
   prefabItemMissil: {fileID: 7326224517711094272, guid: 4142562803629374a838118567bbc529, type: 3}
   chanceSpawnMissil: 0.202
   prefabItemEscudo: {fileID: 23409740}
-  chanceSpawnEscudo: 0.213
+  chanceSpawnEscudo: 0.697
   pontosFaixa:
   - {fileID: 1378964377}
   - {fileID: 121010902}
