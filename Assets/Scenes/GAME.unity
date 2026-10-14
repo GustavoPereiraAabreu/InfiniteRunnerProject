@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 01f4eb1c73693428d923f1520032e7f9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -3256,7 +3256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CicloDiaNoite
   duracaoDoDiaEmSegundos: 120
   luzSol: {fileID: 410087040}
-  skyboxDia: {fileID: 2100000, guid: 2d796ced94d61438fbab81b194038162, type: 2}
+  skyboxDia: {fileID: 2100000, guid: 01f4eb1c73693428d923f1520032e7f9, type: 2}
   skyboxNoite: {fileID: 2100000, guid: 51b74d7bad397457d883c5940f7664d8, type: 2}
   corLuzDia: {r: 1, g: 0.95, b: 0.8, a: 1}
   corLuzNoite: {r: 0.05, g: 0.05, b: 0.2, a: 1}
