@@ -104497,8 +104497,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.009213079, y: 0.006531543, z: 0.020880733}
-  m_Center: {x: 0.00041633696, y: 0.01113781, z: -0.0012772201}
+  m_Size: {x: 0.009213079, y: 0.011923581, z: 0.020880733}
+  m_Center: {x: 0.0004163371, y: 0.008441787, z: -0.0012772203}
 --- !u!114 &8589751108569959482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104514,6 +104514,7 @@ MonoBehaviour:
   velocidadeInicial: 25
   velocidadeMaxima: 60
   ganhoVelocidadePorSegundo: 0.5
+  rotacaoEspecifica: {x: 0, y: -180, z: 0}
   destruirAoPassar: 0
   limiteZDestruicao: -20
   audioSource: {fileID: 0}

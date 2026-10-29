@@ -7,6 +7,9 @@ public class ObstaculoMovimento : MonoBehaviour
     public float velocidadeMaxima = 60f;
     public float ganhoVelocidadePorSegundo = 0.5f;
 
+    [Header("Configuração de Rotação Específica")]
+    public Vector3 rotacaoEspecifica = new Vector3(0, 90, 0);
+
     [Header("Destruição Automática")]
     public bool destruirAoPassar = true;
     public float limiteZDestruicao = -20f;
@@ -27,6 +30,8 @@ public class ObstaculoMovimento : MonoBehaviour
         {
             audioSource = GetComponent<AudioSource>();
         }
+
+        transform.localRotation = Quaternion.Euler(rotacaoEspecifica);
     }
 
     void Update()

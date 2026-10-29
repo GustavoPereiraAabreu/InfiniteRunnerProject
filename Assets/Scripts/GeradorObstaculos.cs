@@ -102,7 +102,6 @@ public class GeradorObstaculos : MonoBehaviour
             );
 
             GameObject obstaculo = Instantiate(prefabsObstaculos[obstaculoSorteado], posObstaculo, Quaternion.identity);
-            obstaculo.transform.localRotation = Quaternion.Euler(0, 90, 0);
         }
 
         bool missilGerado = false;

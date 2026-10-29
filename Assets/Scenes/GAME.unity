@@ -659,7 +659,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 14.42477, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -689,7 +689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: -5}
+  m_AnchoredPosition: {x: -31, y: -5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &292126283
@@ -2392,7 +2392,7 @@ RectTransform:
   m_GameObject: {fileID: 937223873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.7243356, y: 0.7243356, z: 0.7243356}
+  m_LocalScale: {x: 1.332634, y: 1.332634, z: 1.332634}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1729146265}
@@ -2400,8 +2400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175.00003, y: 1550}
-  m_SizeDelta: {x: 265.6721, y: 100}
+  m_AnchoredPosition: {x: -297, y: 1555}
+  m_SizeDelta: {x: 448.7969, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &937223875
 MonoBehaviour:
@@ -3883,7 +3883,7 @@ RectTransform:
   m_GameObject: {fileID: 1225212492}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.7243356, y: 0.7243356, z: 0.7243356}
+  m_LocalScale: {x: 1.114825, y: 1.114825, z: 1.114825}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 250852275}
@@ -3891,8 +3891,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82, y: 1549}
-  m_SizeDelta: {x: 454.8241, y: 130.91}
+  m_AnchoredPosition: {x: 390, y: 1556}
+  m_SizeDelta: {x: 662.3299, y: 130.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225212494
 MonoBehaviour:
@@ -4962,7 +4962,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729146264}
   m_LocalRotation: {x: -0, y: 2.3283059e-10, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -28}
   m_LocalScale: {x: 2.0727143, y: 2.0727143, z: 2.0727143}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4970,7 +4970,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 96, y: -5}
+  m_AnchoredPosition: {x: 23, y: -5}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1729146266
@@ -5103,9 +5103,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GeradorObstaculos
   prefabsObstaculos:
-  - {fileID: 6996116032824978355, guid: cc202b5da0c13404888985cc4787d2ea, type: 3}
+  - {fileID: 4165513279710420358, guid: 796a5bd75ddc6f54c84ee760b30b26cd, type: 3}
   - {fileID: 3631871835623699414, guid: 18e8e5b20e959cf42b3db587c19eed12, type: 3}
   - {fileID: 8833808784947504497, guid: 190e6f3a25e17074483988fccc0c849f, type: 3}
+  - {fileID: 4919075000523362237, guid: 351e630f79f41a2439eb63c4602c483d, type: 3}
   prefabItemMissil: {fileID: 7326224517711094272, guid: 4142562803629374a838118567bbc529, type: 3}
   chanceSpawnMissil: 0.202
   prefabItemEscudo: {fileID: 6387761250020334043, guid: 92c447496b5e9ca4a892d2908630f89a, type: 3}
