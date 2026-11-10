@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6564080516793033580}
   m_Layer: 0
   m_Name: one man
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,8 +113,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.12179384, y: 0.06845259, z: 0.055420898}
-  m_Center: {x: -0.033689257, y: -0.003055779, z: 0.009048572}
+  m_Size: {x: 0.12179384, y: 0.20438802, z: 0.11172347}
+  m_Center: {x: -0.03368925, y: 0.0040077497, z: 0.008268173}
 --- !u!114 &6564080516793033580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   velocidadeInicial: 25
   velocidadeMaxima: 60
   ganhoVelocidadePorSegundo: 0.5
-  rotacaoEspecifica: {x: 0, y: 90, z: 0}
+  rotacaoEspecifica: {x: 90, y: 90, z: 0}
   destruirAoPassar: 0
   limiteZDestruicao: -20
   audioSource: {fileID: 0}
@@ -179,7 +179,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: b3ac5d500ceb86540b2334d15dc7ecbd, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.482
+  m_Volume: 0.219
   m_Pitch: 1
   Loop: 0
   Mute: 0

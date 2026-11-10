@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 4166328384598813484}
   m_Layer: 0
   m_Name: NEIBU_1_Satelite
-  m_TagString: Untagged
+  m_TagString: Obstaculo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -840,8 +840,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.45557532, y: 1.1934626, z: 0.4113266}
-  m_Center: {x: 0, y: 0.2689904, z: 0}
+  m_Size: {x: 0.9854044, y: 1.1934626, z: 0.7519021}
+  m_Center: {x: 0.032318838, y: 0.26899043, z: 0.01907861}
 --- !u!114 &4166328384598813484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,7 +906,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: ebf54d1bfc17c2448b06ecb581875586, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.34
+  m_Volume: 0.198
   m_Pitch: 1
   Loop: 0
   Mute: 0

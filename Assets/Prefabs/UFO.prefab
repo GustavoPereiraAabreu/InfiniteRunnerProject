@@ -256,6 +256,7 @@ MonoBehaviour:
   velocidadeInicial: 25
   velocidadeMaxima: 60
   ganhoVelocidadePorSegundo: 0.5
+  rotacaoEspecifica: {x: 0, y: 90, z: 0}
   destruirAoPassar: 0
   limiteZDestruicao: -20
   audioSource: {fileID: 6875313021509254416}
