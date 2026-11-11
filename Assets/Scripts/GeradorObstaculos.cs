@@ -13,6 +13,10 @@ public class GeradorObstaculos : MonoBehaviour
     public GameObject prefabItemEscudo;
     [Range(0f, 1f)] public float chanceSpawnEscudo = 0.15f;
 
+    [Header("Item Coletável Vida")]
+    public GameObject prefabItemVida;
+    [Range(0f, 1f)] public float chanceSpawnVida = 0.15f;
+
     [Header("Faixas (Posições X e Y)")]
     public Transform[] pontosFaixa;
 
@@ -125,9 +129,11 @@ public class GeradorObstaculos : MonoBehaviour
             missilGerado = true;
         }
 
+        bool escudoGerado = false;
+        int faixaEscudo = -1;
+
         if (prefabItemEscudo != null && pontosFaixa.Length > 1 && Random.value <= chanceSpawnEscudo)
         {
-            int faixaEscudo;
             int tentativas = 0;
             do
             {
@@ -145,6 +151,31 @@ public class GeradorObstaculos : MonoBehaviour
 
                 GameObject escudoItem = Instantiate(prefabItemEscudo, posEscudo, Quaternion.identity);
                 escudoItem.transform.localRotation = Quaternion.identity;
+                escudoGerado = true;
+                faixaEscudo = faixaEscudo; 
+            }
+        }
+
+        if (prefabItemVida != null && pontosFaixa.Length > 1 && Random.value <= chanceSpawnVida)
+        {
+            int faixaVida;
+            int tentativasVida = 0;
+            do
+            {
+                faixaVida = Random.Range(0, pontosFaixa.Length);
+                tentativasVida++;
+            } while ((faixaVida == faixaObstaculo || (missilGerado && faixaVida == faixaMissil) || (escudoGerado && faixaVida == faixaEscudo)) && tentativasVida < 10);
+
+            if (faixaVida != faixaObstaculo && (!missilGerado || faixaVida != faixaMissil) && (!escudoGerado || faixaVida != faixaEscudo))
+            {
+                Vector3 posVida = new Vector3(
+                    pontosFaixa[faixaVida].position.x,
+                    pontosFaixa[faixaVida].position.y,
+                    posicaoZSpawn
+                );
+
+                GameObject vidaItem = Instantiate(prefabItemVida, posVida, Quaternion.identity);
+                vidaItem.transform.localRotation = Quaternion.identity;
             }
         }
     }

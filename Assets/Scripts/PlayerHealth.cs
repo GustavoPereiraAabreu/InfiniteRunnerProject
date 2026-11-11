@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private string tagObstaculo = "Obstaculo";
 
     [Header("Tempo de Proteção pós-Dano")]
-    public int tempoInvulneravel = 30;
+    public float tempoInvulneravel = 2f;
     private bool isInvulneravel = false;
 
     [Header("Sistema de Escudo")]
@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip somDano;
     public AudioClip somMorte;
+    public AudioClip somColetarVida;
 
     void Start()
     {
@@ -87,7 +88,6 @@ public class PlayerHealth : MonoBehaviour
             if (temEscudoAtivo)
             {
                 TocarSom(somEscudoProtegeu);
-
                 Destroy(objetoColidido);
                 return;
             }
@@ -97,6 +97,19 @@ public class PlayerHealth : MonoBehaviour
             TomarDano(1);
             Destroy(objetoColidido);
         }
+    }
+
+    public void AdicionarVida(int quantidade)
+    {
+        vidasRestantes += quantidade;
+
+        if (vidasRestantes > vidas)
+        {
+            vidasRestantes = vidas;
+        }
+
+        TocarSom(somColetarVida);
+        AtualizarTextoVidas();
     }
 
     public void AtivarEscudo(float duracao)
