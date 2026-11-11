@@ -7613,7 +7613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fab688161d3f484d90e975fe8afcb20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  vidas: 3
+  vidasIniciais: 3
+  vidaMaximaPermitida: 10
   tempoInvulneravel: 3
   temEscudoAtivo: 0
   efeitoVisualEscudo: {fileID: 1229940319}
@@ -7628,7 +7629,7 @@ MonoBehaviour:
   audioSource: {fileID: 563984796}
   somDano: {fileID: 8300000, guid: f06232b52c98b68458e549dc3eaef722, type: 3}
   somMorte: {fileID: 0}
-  somColetarVida: {fileID: 0}
+  somColetarVida: {fileID: 8300000, guid: 1702954c3bbfd0f42bd5b08e9bd10725, type: 3}
 --- !u!23 &978596483 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d29894c48e3bd2d4097d5cc1e5f0815d, type: 3}
@@ -14638,7 +14639,7 @@ MonoBehaviour:
   chanceSpawnMissil: 0.202
   prefabItemEscudo: {fileID: 6902498980641049781, guid: 92c447496b5e9ca4a892d2908630f89a, type: 3}
   chanceSpawnEscudo: 0.09
-  prefabItemVida: {fileID: 8229827806882854092, guid: 743617f2f6644ed469e5fca9bde41c73, type: 3}
+  prefabItemVida: {fileID: 1494331490792705103, guid: 743617f2f6644ed469e5fca9bde41c73, type: 3}
   chanceSpawnVida: 0.15
   pontosFaixa:
   - {fileID: 1378964377}

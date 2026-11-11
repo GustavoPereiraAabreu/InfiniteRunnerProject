@@ -5,7 +5,8 @@ using TMPro;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Configurações de Vida")]
-    public int vidas = 3;
+    public int vidasIniciais = 3;
+    public int vidaMaximaPermitida = 10;
     private int vidasRestantes;
 
     private string tagObstaculo = "Obstaculo";
@@ -42,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        vidasRestantes = vidas;
+        vidasRestantes = vidasIniciais;
         AtualizarTextoVidas();
 
         if (painelGameOver != null)
@@ -101,11 +102,17 @@ public class PlayerHealth : MonoBehaviour
 
     public void AdicionarVida(int quantidade)
     {
+        if (vidasRestantes >= vidaMaximaPermitida)
+        {
+            vidasRestantes = vidaMaximaPermitida;
+            return;
+        }
+
         vidasRestantes += quantidade;
 
-        if (vidasRestantes > vidas)
+        if (vidasRestantes > vidaMaximaPermitida)
         {
-            vidasRestantes = vidas;
+            vidasRestantes = vidaMaximaPermitida;
         }
 
         TocarSom(somColetarVida);
